@@ -16,6 +16,13 @@ Write code to
   - get relative path of `index.js` 
   - get absolute path of `index.js`
 
+```js
+const relativePathIndexJS = "../client/index.js";
+const absolutePathIndexJS = __dirname + "/" + relativePathIndexJS;
+
+console.log(relativePathIndexJS, absolutePathIndexJS);
+```
+
 #### server
 Create a basic http server which should grab data from a HTML form rendered on a specific route and display the content on a seperate page.
 

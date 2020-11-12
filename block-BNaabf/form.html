@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HTML FORM</title>
+	</head>
+	<body>
+		<form action="./form.html" method="post">
+			<label
+				>Name:
+				<input type="text" name="name" placeholder="Enter Name" />
+			</label>
+			<label
+				>Email:
+				<input type="email" name="email" placeholder="Email" />
+			</label>
+			<label
+				>Age:
+				<input type="number" name="age" min="1" placeholder="20" />
+			</label>
+			<input type="submit" value="SUBMIT" />
+		</form>
+	</body>
+
+	<script>
+		const form = document.querySelector("form");
+
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			console.log("Working");
+			const data = `name=${e.target.name.value}&email=${e.target.email.value}&age=${e.target.age.value}`;
+
+			fetch("http://localhost:5678/form", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: data,
+			})
+				.then((res) => res.text())
+				.then((html) => (document.body.innerHTML = html));
+		});
+	</script>
+</html>
